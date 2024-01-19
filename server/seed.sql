@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS posts (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   content TEXT NOT NULL,
-  likes INTEGER,
+  likes INTEGER DEFAULT 0,
   category_id INTEGER REFERENCES categories(id)
 );
 

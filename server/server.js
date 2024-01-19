@@ -61,6 +61,18 @@ app.post("/delete", async (req, res) => {
   }
 });
 
+app.post("/newpost", async (req, res) => {
+  try {
+    const category = await db.query("SELECT id FROM categories WHERE name=$1",[req.body.category]);
+    const addPost = await db.query("INSERT INTO posts (title, content, category_id) VALUES ($1, $2, $3) RETURNING *", [req.body.title, req.body.content, category.rows[0].id]);
+    res.status(200).json(addPost.rows[0]);
+  }
+  catch(err) {
+    //console.log(err);
+    res.status(500).json(ERROR_STRING);
+  }
+});
+
 /* ----- LISTEN LISTEN LISTE ----- */
 app.listen(PORT, () => console.log(`App is running on PORT ${PORT}`));
 
