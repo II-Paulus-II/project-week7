@@ -17,6 +17,12 @@ app.get("/", (request, response) => {
   response.json("Your server is online!");
 });
 
+app.get("/test", async (req, res) => {
+  const result = await db.query("SELECT * FROM test");
+  res.json(result.rows);
+  console.log(result.rows);
+});
+
 /* ----- LISTEN LISTEN LISTE ----- */
 app.listen(PORT, () => console.log(`App is running on PORT ${PORT}`));
 
