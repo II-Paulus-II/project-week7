@@ -26,7 +26,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/posts" element={<Posts server={SERVER_LOCATION} />} />
       <Route path="/newpost" element={<Newpost />} />
-      <Route path="/categories" element={<Categories />} />
+      <Route path="/categories" element={<Categories server={SERVER_LOCATION} />} />
     </Routes>
     <div></div>
     </>

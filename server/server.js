@@ -39,6 +39,16 @@ app.get("/posts", async (req, res) => {
   }
 });
 
+app.get("/categories", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM categories");
+    res.json(result.rows);
+  }
+  catch(err) {
+    res.status(500).json(ERROR_STRING);
+  }
+});
+
 app.get("/posts/category/:name", async (req, res) => {
   try {
     const name = req.params.name;
