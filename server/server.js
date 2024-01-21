@@ -63,8 +63,13 @@ app.get("/posts/category/:name", async (req, res) => {
 app.post("/delete", async (req, res) => {
   try {
     const id = Number(req.body.id);
-    const deleteMsg = await db.query("DELETE FROM posts WHERE id=$1", [id]);
-    res.status(200).json("success");
+    const protectedResult = await db.query("SELECT posts.deleteblocked FROM posts WHERE id=$1", [id]);
+    const protectedPost = protectedResult.rows[0].deleteblocked; 
+    if(!protectedPost) {
+      const deleteMsg = await db.query("DELETE FROM posts WHERE id=$1", [id]);
+      res.status(200).json("success");
+    }
+    else res.status(200).json("Post is Protected");
   }
   catch(err) {
     res.status(500).json(ERROR_STRING);
@@ -78,7 +83,6 @@ app.post("/newpost", async (req, res) => {
     res.status(200).json(addPost.rows[0]);
   }
   catch(err) {
-    //console.log(err);
     res.status(500).json(ERROR_STRING);
   }
 });

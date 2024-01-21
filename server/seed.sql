@@ -31,3 +31,7 @@ INSERT INTO posts (title, content, likes, category_id) VALUES ('Food is Necessar
 INSERT INTO posts (title, content, likes, category_id) VALUES ('France', 'French people live in France.', 0, 4);
 INSERT INTO posts (title, content, likes, category_id) VALUES ('Friends', 'Everyone needs friends to drink whiskey with', 0, 5);
 INSERT INTO posts (title, content, likes, category_id) VALUES ('The Importance of Facts', 'As we all know facts are very important.', 0, 1);
+
+/*ALTER TABLE posts ADD protected BIT;*/
+ALTER TABLE posts ADD deleteblocked BOOLEAN DEFAULT false;
+UPDATE posts SET deleteblocked = true WHERE id IN (1,2,3,4,5,6);
