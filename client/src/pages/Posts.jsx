@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Posts({server}) {
 
@@ -8,8 +9,8 @@ export default function Posts({server}) {
   }, []);
 
   async function handleFetchPosts () {
-    const endpoint = `${server}/posts`
-    const reply = await fetch(`${endpoint}`)
+    const endpoint = `${server}/posts`;
+    const reply = await fetch(`${endpoint}`);
     const data = await reply.json();
     setPosts(data);
   }
@@ -22,10 +23,8 @@ export default function Posts({server}) {
     <h2>{postsTitle}</h2>
     <div>{posts.map((post) => {
         return (
-          <div key={post.id + post.title}>
-          <h3 key={post.title}>{post.title}</h3>
-          <p key={post.id + post.content}>{post.content}</p>
-          <p key={post.content + post.category}>Category: {post.category}</p>
+          <div key={`${post.id}-${post.title}`}>
+          <Link to={`/fullpost/${post.id}`}><h3 key={post.title}>{post.title}</h3></Link>
           </div>
         );
       })}</div>
@@ -33,3 +32,4 @@ export default function Posts({server}) {
     </>
   );
 };
+

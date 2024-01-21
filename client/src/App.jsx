@@ -5,6 +5,7 @@ import Home from "./pages/Home.jsx";
 import Posts from "./pages/Posts.jsx";
 import Newpost from "./pages/Newpost.jsx";
 import Categories from "./pages/Categories.jsx";
+import Fullpost from "./pages/Fullpost.jsx";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Route path="/posts" element={<Posts server={SERVER_LOCATION} />} />
       <Route path="/newpost" element={<Newpost />} />
       <Route path="/categories" element={<Categories server={SERVER_LOCATION} />} />
+      <Route path="/fullpost/:id" element={<Fullpost server={SERVER_LOCATION} />} />
     </Routes>
     <div></div>
     </>
