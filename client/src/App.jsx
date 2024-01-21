@@ -6,6 +6,7 @@ import Posts from "./pages/Posts.jsx";
 import Newpost from "./pages/Newpost.jsx";
 import Categories from "./pages/Categories.jsx";
 import Fullpost from "./pages/Fullpost.jsx";
+import Postsbycat from "./pages/Postsbycat.jsx";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/newpost" element={<Newpost />} />
       <Route path="/categories" element={<Categories server={SERVER_LOCATION} />} />
       <Route path="/fullpost/:id" element={<Fullpost server={SERVER_LOCATION} />} />
+      <Route path="/categories/posts/:name" element={<Postsbycat server={SERVER_LOCATION}/>} />
     </Routes>
     <div></div>
     </>
