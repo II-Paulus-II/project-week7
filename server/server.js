@@ -42,9 +42,7 @@ app.get("/posts", async (req, res) => {
 app.get("/singlepost/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    console.log(id);
     const result = await db.query("SELECT posts.id, posts.title, posts.content, posts.likes, categories.name AS category FROM posts JOIN categories ON posts.category_id = categories.id WHERE posts.id=$1", [id]);
-    console.log(result.rows);
     res.json(result.rows[0]);
   }
   catch(err) {
