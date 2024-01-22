@@ -1,0 +1,14 @@
+.newPost {
+  margin: 2rem;
+}
+
+.formNewPost {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 900px;
+}
+
+.bigHeight {
+  height: 250px;
+}

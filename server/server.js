@@ -89,8 +89,7 @@ app.post("/delete", async (req, res) => {
 
 app.post("/newpost", async (req, res) => {
   try {
-    const category = await db.query("SELECT id FROM categories WHERE name=$1",[req.body.category]);
-    const addPost = await db.query("INSERT INTO posts (title, content, category_id) VALUES ($1, $2, $3) RETURNING *", [req.body.title, req.body.content, category.rows[0].id]);
+    const addPost = await db.query("INSERT INTO posts (title, content, category_id) VALUES ($1, $2, $3) RETURNING *", [req.body.title, req.body.content, req.body.category_id]);
     res.status(200).json(addPost.rows[0]);
   }
   catch(err) {
