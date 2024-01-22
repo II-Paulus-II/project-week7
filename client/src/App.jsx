@@ -15,7 +15,7 @@ function App() {
   if(window.location.hostname === "localhost") {
     SERVER_LOCATION = "http://localhost:8888"
   } else {
-    SERVER_LOCATION = "https://paulus-pw7-backend.onrender.com/";
+    SERVER_LOCATION = "https://paulus-pw7-backend.onrender.com";
   }
 
   return (
