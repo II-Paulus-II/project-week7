@@ -15,7 +15,7 @@ function App() {
   if(window.location.hostname === "localhost") {
     SERVER_LOCATION = "http://localhost:8888"
   } else {
-    SERVER_LOCATION = "https://NOTSURE";
+    SERVER_LOCATION = "https://paulus-pw7-backend.onrender.com/";
   }
 
   return (
@@ -27,7 +27,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/posts" element={<Posts server={SERVER_LOCATION} />} />
-      <Route path="/newpost" element={<Newpost />} />
+      <Route path="/newpost" element={<Newpost server={SERVER_LOCATION} />} />
       <Route path="/categories" element={<Categories server={SERVER_LOCATION} />} />
       <Route path="/fullpost/:id" element={<Fullpost server={SERVER_LOCATION} />} />
       <Route path="/categories/posts/:name" element={<Postsbycat server={SERVER_LOCATION}/>} />
