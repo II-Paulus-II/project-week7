@@ -20,10 +20,12 @@ function App() {
 
   return (
     <>
+    <nav>
     <Link to="/">Home</Link>
     <Link to="/posts">Posts</Link>
     <Link to="/newpost">New Post</Link>
     <Link to="/categories">Categories</Link>
+    </nav>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/posts" element={<Posts server={SERVER_LOCATION} />} />
